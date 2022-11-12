@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     //region ------StepCounting------
+    //Commented out as these cause timer to start immediately
     /*
      * When the app is brought to the foreground - using app on screen
 
@@ -187,17 +188,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
     //region ------Timer------
+    //Start the timer
     public void TimerStart() {
         timer.start();
         //Toast.makeText(this, "Started counting", Toast.LENGTH_LONG).show();
     }
 
+    //Pause the timer
     public void TimerStop() {
         pauseTime = Integer.parseInt(counterTime.getText().toString());
         timer.cancel();
         //Toast.makeText(this, "Stopped Run", Toast.LENGTH_LONG).show();
     }
 
+    //Reset the timer
     public void TimerReset() {
         timer.cancel();
         counterTime.setText("0");
@@ -227,6 +231,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void doStartStop(View view) {
         if(endOfRun == true)
         {
+            //If user has ended a run, dont start new run and display tip to reset activity
             Toast.makeText(this, "Reset before starting a new run", Toast.LENGTH_LONG).show();
         }
         else
@@ -302,6 +307,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         Toast.makeText(this, "Hold to end run", Toast.LENGTH_LONG).show();
     }
 
+    //Handle end of run
     public void doEndRun() {
         //Enable stats
         btnStats.setClickable(true);
